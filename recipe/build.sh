@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
+if [ ! -z ${LIBRARY_PREFIX+x} ]; then
+    PATH=$PATH:$LIBRARY_BIN
+fi
+
+mkdir -p /tmp
+ls -l /bin/uname
+
 UNAME="$(uname)"
 
 if [ "${UNAME}" == "Linux" ]; then
@@ -15,8 +22,8 @@ export OPENBLAS_NUM_THREADS=1
 
 if [ ! -z ${LIBRARY_PREFIX+x} ]; then
     USE_PREFIX=$LIBRARY_PREFIX
-    WITH_BLAS_LIB="${LIBRARY_PREFIX}\lib\blas.lib"
-    WITH_LAPACK_LIB="${LIBRARY_PREFIX}\lib\lapack.lib"
+    WITH_BLAS_LIB="${LIBRARY_LIB}\blas.lib"
+    WITH_LAPACK_LIB="${LIBRARY_LIB}\lapack.lib"
 else
     # Get an updated config.sub and config.guess
     cp $BUILD_PREFIX/share/gnuconfig/config.* ./CoinUtils
