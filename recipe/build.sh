@@ -5,8 +5,9 @@ if [ ! -z ${LIBRARY_PREFIX+x} ]; then
     PATH=$PATH:$LIBRARY_BIN
 fi
 
+echo $PATH
+
 mkdir -p /tmp
-ls -l /bin/uname
 
 UNAME="$(uname)"
 
