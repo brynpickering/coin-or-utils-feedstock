@@ -18,6 +18,9 @@ if [ ! -z ${LIBRARY_PREFIX+x} ]; then
     WITH_BLAS_LIB="${LIBRARY_PREFIX}\lib\blas.lib"
     WITH_LAPACK_LIB="${LIBRARY_PREFIX}\lib\lapack.lib"
 else
+    # Get an updated config.sub and config.guess
+    cp $BUILD_PREFIX/share/gnuconfig/config.* ./CoinUtils
+    cp $BUILD_PREFIX/share/gnuconfig/config.* .
     USE_PREFIX=$PREFIX
     WITH_BLAS_LIB="-L${PREFIX}/lib -lblas"
     WITH_LAPACK_LIB="-L${PREFIX}/lib -llapack"
