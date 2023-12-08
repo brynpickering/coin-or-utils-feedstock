@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-# for win
-mkdir -p /tmp
-
 UNAME="$(uname)"
 
 if [ "${UNAME}" == "Linux" ]; then
